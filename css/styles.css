@@ -20,7 +20,8 @@
     --tertialy-bg-color: #2F303A;
     --border-color: #EEEEEE;
     --secondary-border-color: #ECECEC;
-    --icon-default-color: #afb1b8
+    --icon-default-color: #afb1b8;
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body{
     background-color: var(white);
@@ -101,6 +102,8 @@ img{
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color 250ms var(--timing-function);
 }
 .contacts .link{
     display: flex;
@@ -111,10 +114,27 @@ img{
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color 250ms var(--timing-function);
 }
 .contacts-icon{
     margin-right: 10px;
     fill: currentColor;
+}
+.link.current{
+    position: relative;
+}
+.link.current::after{
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--accent);
 }
 
 /*Main*/
@@ -125,6 +145,7 @@ img{
     height: 600px;
     margin-left: auto;
     margin-right: auto;
+
     background-color: var(--tertialy-bg-color);
     background-image: linear-gradient(
         to right,
@@ -163,6 +184,51 @@ img{
     line-height: 1.87;
     letter-spacing: 0.06em;
     
+}
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    transition: opacity 250ms var(--timing-function);
+}
+.backdrop.is-hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0.8);
+}
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    width: 528px;
+    height: 581px;
+
+    background-color: var(--white);
+
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms var(--timing-function);
+}
+.close-window{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
 }
 .section-title{
     margin-top: 0;
@@ -221,6 +287,37 @@ img{
 }
 .what-we-do .list-item{
     width: calc((100% - 60px) / 3);
+    position: relative;
+}
+.what-we-do .label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 27px;
+    width: 370px;
+    height: 70px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14px;
+    text-transform: uppercase;
+    color: var(--white);
+}
+.what-we-do .list-item::before{
+    content: "";
+    display: inline-block;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(47, 48, 58, 0.8);
 }
 .our-services,
 .our-people,
@@ -233,8 +330,6 @@ img{
 }
 .our-team-members .list-item{
     width: calc((100% - 90px) / 4);
-}
-.employee-card{
     border-radius: 0px 0px 4px 4px;
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
     overflow: hidden;
@@ -279,6 +374,8 @@ img{
     height: 44px;
     border-radius: 50%;
     color: var(--icon-default-color);
+
+    transition: background-color 250ms var(--timing-function), color 250ms var(--timing-function);
 }
 .social-link:hover{
     background-color: var(--accent);
@@ -296,6 +393,8 @@ img{
     border-radius: 50%;
     color: var(--white);
     background-color: rgba(255, 255, 255, 0.1);
+
+    transition: background-color 250ms var(--timing-function);
 }
 .social-link-footer:hover{
     background-color: var(--accent);
@@ -310,6 +409,8 @@ img{
     color: var(--icon-default-color);
     border: 1px solid var(--icon-default-color);
     cursor: pointer;
+
+    transition: color 250ms var(--timing-function), border 250ms var(--timing-function);
 }
 .client:hover{
     color: var(--accent);
@@ -352,6 +453,9 @@ margin-right: 70px;
     font-size: 14px;
     line-height: 1.71;
 }
+.footer .link{
+    transition: color 250ms var(--timing-function);
+}
 .footer .link:hover,
 .footer .link:focus{
     color: var(--accent);
@@ -393,6 +497,8 @@ margin-right: 70px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.62;
+
+    transition: background-color 250ms var(--timing-function), color 250ms var(--timing-function);
 }
 .button:hover,
 .button:focus{
@@ -418,9 +524,6 @@ margin-right: 70px;
 .project-examples .item:nth-last-child(-n + 3){
     margin-bottom: 0;
 }
-.project-examples a{
-    display: block;
-}
 .project-examples h2{
     margin-top: 0;
     margin-bottom: 0;
@@ -431,6 +534,54 @@ margin-right: 70px;
     line-height: 2;
     letter-spacing: 0.06em;
 }
+.project-card{
+    display: block;
+    
+    transition: box-shadow 250ms var(--timing-function);
+}
+.project-card:hover{
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+.overlay{
+    position: relative;
+}
+.project-description{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 63px 24px;
+
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--white);
+    
+    opacity: 0;
+    transition: opacity 250ms var(--timing-function);
+}
+.project-card:hover .project-description{
+    opacity: 1;   
+}
+.overlay::before{
+    content: "";
+    display: inline-block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform 250ms var(--timing-function);
+}
+.project-card:hover .overlay::before{
+    transform: translateY(0);
+}
+.overlay{
+    overflow: hidden;
+} 
 .project-type{
     margin-top: 4px;
     margin-bottom: 0;
@@ -446,9 +597,7 @@ margin-right: 70px;
     border-left: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
-.project-card:hover{
-    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12);
-}
+
 .container{
     width: 1200px;
     padding-left: 15px;

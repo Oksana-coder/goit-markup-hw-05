@@ -38,9 +38,14 @@
             <div class="container">
             <h1 class="hero-title">Эффективные решения<br/>
                 для вашего бизнеса</h1>
-            <a href="" class="hero-button">Заказать услугу</a>
+            <a href="" class="hero-button" data-modal-open>Заказать услугу</a>
             </div>
         </section>
+        <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+                <button class="close-window" data-modal-close>x</button>
+            </div>
+        </div>
 
         <section class="section">
             <div class="container our-features">
@@ -81,9 +86,18 @@
             <div class="container our-services">
             <h2 class="section-title">Чем мы занимаемся</h2>
             <ul class="what-we-do">
-                <li class="list-item"><img src="./images/Optimized/jpeg/box11.jpg" alt="Человек, вводящий код на клавиатуре" width="370"></li>
-                <li class="list-item"><img src="./images/Optimized/jpeg/box21.jpg" alt="Человек, выбирающий дизайн для мобильного сайта" width="370"></li>
-                <li class="list-item"><img src="./images/Optimized/jpeg/box31.jpg" alt="Человек, выбирающий цвета для дизайна" width="370"></li>
+                <li class="list-item">
+                    <img src="./images/Optimized/jpeg/box11.jpg" alt="Человек, вводящий код на клавиатуре" width="370">
+                    <p class="label">Десктопные приложения</p>
+                </li>
+                <li class="list-item">
+                    <img src="./images/Optimized/jpeg/box21.jpg" alt="Человек, выбирающий дизайн для мобильного сайта" width="370">
+                    <p class="label">Мобильные приложения</p>
+                </li>
+                <li class="list-item">
+                    <img src="./images/Optimized/jpeg/box31.jpg" alt="Человек, выбирающий цвета для дизайна" width="370">
+                    <p class="label">Дизайнерские решения</p>
+                </li>
             </ul>
             </div>
         </section>
@@ -92,7 +106,6 @@
             <h2 class="section-title">Наша команда</h2>
             <ul class="our-team-members">
                 <li class="list-item">
-                    <div class="employee-card">
                         <img src="./images/Optimized/jpeg/team-card11.jpg" alt="Фото Игорь Демьяненко" width="270" class="team-member-photo">
                         <div class="team-member-details">
                             <h3 class="team-member">Игорь Демьяненко</h3>
@@ -112,10 +125,8 @@
                                 </a></li>
                             </ul>
                         </div>
-                    </div>
                 </li>
                 <li class="list-item">
-                    <div class="employee-card">
                         <img src="./images/Optimized/jpeg/team-card21.jpg" alt="Фото Ольга Репина" width="270" class="team-member-photo">
                         <div class="team-member-details">
                             <h3 class="team-member">Ольга Репина</h3>
@@ -135,10 +146,8 @@
                                 </a></li>
                             </ul>
                         </div>
-                    </div>
                 </li>
                 <li class="list-item">
-                    <div class="employee-card">
                         <img src="./images/Optimized/jpeg/team-card31.jpg" alt="Фото Николай Тарасов" width="270" class="team-member-photo">
                         <div class="team-member-details">
                             <h3 class="team-member">Николай Тарасов</h3>
@@ -158,10 +167,8 @@
                                 </a></li>
                             </ul>
                         </div>
-                    </div>
                 </li>
                 <li class="list-item">
-                    <div class="employee-card">
                         <img src="./images/Optimized/jpeg/team-card41.jpg" alt="Фото Михаил Ермаков" width="270" class="team-member-photo">
                         <div class="team-member-details">
                             <h3 class="team-member">Михаил Ермаков</h3>
@@ -181,7 +188,6 @@
                                 </a></li>
                             </ul>
                         </div>
-                    </div>
                 </li>
             </ul>
             </div>
@@ -242,6 +248,6 @@
             </div>
         </div>
     </footer>
-    
+    <script src="./js/modal.js"></script>
 </body>
 </html>
